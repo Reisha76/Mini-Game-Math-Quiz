@@ -234,15 +234,27 @@ string GetOperationType(stQuizInfo QuizInfo)
 
 void GameOverScreen(stQuizInfo &QuizInfo)
 {
+    string Face;
+    if (CheckGameResult(QuizInfo) == "PASS")
+    {
+        system("color 2F");
+         Face = ":-)";
+    }
+    else
+    {
+        system("color 4F");
+         Face = ":-(";
+
+    }
     cout << "----------------------------------------------------\n\n";
-    cout << Tabs(1) << "Final result is " << CheckGameResult(QuizInfo) << ":-)\n";
+    cout << Tabs(2) << "Final result is " << CheckGameResult(QuizInfo) << " " << Face << endl << endl;
     cout << "----------------------------------------------------\n\n";
     cout << "Number of Questions         : " << QuizInfo.NumOfQuestions << endl;
     cout << "Questions Difficulty        : " << GetDifficulty(QuizInfo) << endl;
     cout << "Type of operation           : " << GetOperationType(QuizInfo) << endl;
     cout << "Number of Correct Answers   : " << QuizInfo.UserScore<<endl;
     cout << "Number of Incorrect Answers : " << QuizInfo.NumOfQuestions - QuizInfo.UserScore<<endl<<endl;
-
+    
 }
 
 void PlayGame(stQuizInfo &QuizInfo)
